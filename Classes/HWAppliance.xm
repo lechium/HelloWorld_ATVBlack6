@@ -122,7 +122,7 @@ static char const * const applianceCategoriesKey = "applianceCategories";
 	
 	//NSLog(@"INITIALIZE");
 	
-	//[HWAppliance forceCrash]; //in here solely to show how to use hwSymbols shell script	
+		//[objc_getClass("HWAppliance") forceCrash]; //in here solely to show how to use hwSymbols shell script	
 }
 
 - (id)topShelfController { return objc_getAssociatedObject(self, topShelfControllerKey); }

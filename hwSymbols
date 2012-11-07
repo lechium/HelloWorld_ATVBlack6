@@ -1,14 +1,13 @@
 #/bin/bash
 
 
-hwBase=~/Projects/ATV2/HelloWorld_ATVBlack/
+hwBase=~/Projects/ATV2/HelloWorld_ATVBlack6/
 applianceName=HW
-address=0x14a5000
 
 usage ()
 {
     echo " "
-    echo          "usage: hwSymbols <address>"
+    echo          "usage: hwSymbols <address> <load address>"
     echo " "
     echo          "Symbolicate HW.frappliance crash lines."
     echo          "	"
@@ -19,26 +18,30 @@ usage ()
     echo          "     11  HW                            	0x014a607e 0x14a5000 + 4222"
     echo          "     "
 	echo ""
-    echo          "% hwSymbols 0x014a61e0"
+    echo          "% hwSymbols 0x014a61e0 0x14a5000"
     echo " "
 	echo 	  "+[HWAppliance forceCrash] (in HW) (HWAppliance.mm:80)"
 	echo ""
 	echo "---------"
 	echo ""
-    echo "Input Error: You must a numeric address to symbolicate"
+    echo "Input Error: You must enter a numeric address and a load address to symbolicate"
     echo " "
   
 }
 
 # if there aren't two arguments display usage and exit
 
-if [ $# != 1 ]; then
+if [ $# != 2 ]; then
    usage
    exit
 fi
 
+if [ ! -d $hwBase ]; then
 
-cd $hwBase"/build/Debug-iphoneos"
-#echo cd $hwBase"/build/Debug-iphoneos"
-atos -o HW.frappliance/HW -arch arm -l $address $1
-#echo "atos -o HW.frappliance/HW -arch arm -l $address $1"
+	echo $hwBase "not found!"
+
+fi
+
+
+cd $hwBase
+atos -o HW_unstripped -arch arm -l $2 $1

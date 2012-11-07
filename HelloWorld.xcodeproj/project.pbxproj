@@ -11,6 +11,7 @@
 		32799385135587E900CD2667 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32799384135587E900CD2667 /* Info.plist */; };
 		875A824D126FFF1F00ECADC2 /* HWAppliance.xm in Sources */ = {isa = PBXBuildFile; fileRef = 875A824A126FFF1F00ECADC2 /* HWAppliance.xm */; };
 		875A8428126FFF6D00ECADC2 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 875A8427126FFF6D00ECADC2 /* Makefile */; };
+		89C20932164A696B001D6F82 /* hwSymbols in Resources */ = {isa = PBXBuildFile; fileRef = 89C20931164A696B001D6F82 /* hwSymbols */; };
 		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		875A824C126FFF1F00ECADC2 /* HWBasicMenu.xm */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; name = HWBasicMenu.xm; path = Classes/HWBasicMenu.xm; sourceTree = "<group>"; };
 		875A8427126FFF6D00ECADC2 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		875A86EB12704ACC00ECADC2 /* theos */ = {isa = PBXFileReference; lastKnownFileType = folder; path = theos; sourceTree = "<group>"; };
+		89C20931164A696B001D6F82 /* hwSymbols */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hwSymbols; sourceTree = "<group>"; };
 		8D5B49B6048680CD000E48DA /* atvTwo.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = atvTwo.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7E65807B2D6F200F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -46,6 +48,7 @@
 		089C166AFE841209C02AAC07 /* atvTwo */ = {
 			isa = PBXGroup;
 			children = (
+				89C20931164A696B001D6F82 /* hwSymbols */,
 				875A8427126FFF6D00ECADC2 /* Makefile */,
 				875A86EB12704ACC00ECADC2 /* theos */,
 				08FB77AFFE84173DC02AAC07 /* Classes */,
@@ -174,6 +177,7 @@
 			files = (
 				32799385135587E900CD2667 /* Info.plist in Resources */,
 				8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */,
+				89C20932164A696B001D6F82 /* hwSymbols in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

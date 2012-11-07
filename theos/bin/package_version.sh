@@ -62,9 +62,9 @@ if [[ $SKIPONE -eq 1 && $build_number -eq 1 ]]; then
 fi
 
 extra_part=""
-if [[ ! -z "$EXTRAVERS" ]]; then
-	extra_part="+$EXTRAVERS"
-fi
+#if [[ ! -z "$EXTRAVERS" ]]; then
+#	extra_part="+$EXTRAVERS"
+#fi
 
 full_version="$version$buildno_part$extra_part"
 if [[ $KEEP_LAST -eq 1 ]]; then

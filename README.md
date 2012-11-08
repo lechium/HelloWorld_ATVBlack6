@@ -28,8 +28,8 @@ from here in the after-HW-stage we copy the unstripped binary into our root fold
 
 also needed to make a modification to comment out the addition of debug or whatever in theos/bin/package_version.sh commenting out lines 65-67, without doing this it adds +DEBUG or something along those lines to the version number in the control file.
 
-#if [[ ! -z "$EXTRAVERS" ]]; then
-#	extra_part="+$EXTRAVERS"
-#fi
+if [[ ! -z "$EXTRAVERS" ]]; then
+	extra_part="+$EXTRAVERS"
+fi
 
 without all these extra modifications debugging crashes is insanely difficult.

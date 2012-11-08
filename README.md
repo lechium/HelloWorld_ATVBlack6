@@ -16,3 +16,5 @@ NSArray *controlArray = nil;
 if ([self respondsToSelector:@selector(controls)]) { controlArray = [self controls]; } else { controlArray = [self subviews]; }
 
 BRImageAndSyncingPreviewController is gone so we replace it with something that is NOT comparable: BRIconPreviewController.
+
+**main menu image:** all of them are stored inside AppleTV.app now, so you need a copy of the icon as AppIcon.png inside your .frappliance bundle, and you need to add Applications/AppleTV.app/ with your identifier @720p.png ie: "com.apple.frontrow.appliance.hw@720p.png"

@@ -5,6 +5,6 @@ build
 HelloWorld.xcodeproj/*.pbxuser
 HelloWorld.xcodeproj/*.perspectivev3
 
-com.*
+*.deb
 _/
 .debmake

@@ -18,3 +18,18 @@ if ([self respondsToSelector:@selector(controls)]) { controlArray = [self contro
 BRImageAndSyncingPreviewController is gone so we replace it with something that is NOT comparable: BRIconPreviewController.
 
 **main menu image:** all of them are stored inside AppleTV.app now, so you need a copy of the icon as AppIcon.png inside your .frappliance bundle, and you need to add Applications/AppleTV.app/ with your identifier @720p.png ie: "com.apple.frontrow.appliance.hw@720p.png"
+
+**theos modification notes:**
+
+So this is a slightly outdated version of theos (could've swore i updated it to the latest, guess not) so some of the constants in the make file have since been renamed again in more recent versions.
+
+the main modifications made is to build in debug mode (export DEBUG=1), this builds the plugin with all the symbols for debugging and crash symbolication intact
+from here in the after-HW-stage we copy the unstripped binary into our root folder, generate a dSYM file, strip and re-sign the binary so its properly stripped for packaging and releasing.
+
+also needed to make a modification to comment out the addition of debug or whatever in theos/bin/package_version.sh commenting out lines 65-67, without doing this it adds +DEBUG or something along those lines to the version number in the control file.
+
+#if [[ ! -z "$EXTRAVERS" ]]; then
+#	extra_part="+$EXTRAVERS"
+#fi
+
+without all these extra modifications debugging crashes is insanely difficult.

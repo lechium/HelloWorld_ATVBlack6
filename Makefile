@@ -2,7 +2,8 @@ GO_EASY_ON_ME=1
 export DEBUG=1
 export SDKVERSION=4.3
 FW_DEVICE_IP=apple-tv.local
-THEOS_DEVICE_IP=testtv.local
+#THEOS_DEVICE_IP=testtv.local
+#FW_DEVICE_IP=testtv.local
 include theos/makefiles/common.mk
 
 

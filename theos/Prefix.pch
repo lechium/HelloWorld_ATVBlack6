@@ -26,4 +26,5 @@
 	#define NB [NSBundle mainBundle]
 	#define UD [NSUserDefaults standardUserDefaults]
 	#define FM [NSFileManager defaultManager]
+#define ROOT_STACK [[objc_getClass("BRApplicationStackManager") singleton] stack]
 #endif

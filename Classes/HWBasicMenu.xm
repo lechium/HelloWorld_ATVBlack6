@@ -23,7 +23,7 @@ static char const * const menuItemKey = "MenuItems";
 		
 		//NSLog(@"%@ %s", self, _cmd);
 		
-		[self setListTitle:@"Hello World!"];
+		[self setListTitle:@"Utilities"];
 		
 		/* 
 		 
@@ -40,11 +40,13 @@ static char const * const menuItemKey = "MenuItems";
 			//these are our menu options in our new controller
 		
 		NSMutableArray *theArray = [[NSMutableArray alloc] init];
-		[theArray addObject:@"First Object"];
-		[theArray addObject:@"Second Objectz"];
+		[theArray addObject:@"Quit Finder"];
+		[theArray addObject:@"Show Console Log"];
 		[self setMenuItems:theArray];
 		[[self list] setDatasource:self];
 		[[self list] addDividerAtIndex:1 withLabel:@"testing"];
+      
+        
 		return ( self );
 		
 	}
@@ -99,11 +101,58 @@ static char const * const menuItemKey = "MenuItems";
 - (void)itemSelected:(long)selected {
 	
 	NSDictionary *currentObject = [[self menuItems] objectAtIndex:selected];
-	NSLog(@"item selected: %@", currentObject);
-	
+//	NSLog(@"item selected: %@", currentObject);
+    id spinControl = nil;
+	id controller = nil;
+	id scrollBar = nil;
+	NSDictionary *lcd = nil;
+	id textControls = nil;
+	id tb;
+	id list;
+	switch (selected)
+    {
+        case 0: //first item quit finder
+            [[NSClassFromString(@"BRApplication") sharedApplication] terminate];
+            break;
+            
+        case 1: //show console
+            
+            system("tail -n 200 /var/log/syslog >/tmp/temp.log");
+			textControls = [[objc_getClass("BRScrollingTextControl") alloc] init];
+           // NSLog(@"textcontrols: %@", textControls);
+			tb = [textControls valueForKey:@"textBox"];
+			list = [tb valueForKey:@"list"];
+			scrollBar = [[list providers] objectAtIndex:0];
+           // NSLog(@"list %@", scrollBar);
+			[textControls setDocumentPath:@"/tmp/temp.log" encoding:NSUTF8StringEncoding];
+			[textControls setTitle:@"syslog"];
+			
+			controller =  [%c(BRController) controllerWithContentControl:textControls];
+			
+            //NSLog(@"%@", [[textControls textBox] text]);
+			
+			
+			[ROOT_STACK pushController:controller];
+			
+			lcd = [NSDictionary dictionaryWithObject:list forKey:@"ListControl"];
+			
+			[textControls release];
+			
+			
+			[NSTimer scheduledTimerWithTimeInterval:.1 target: self selector: @selector(myJumpToEnd:) userInfo:lcd  repeats: NO];
+
+            break;
+    }
 	
 }
 
+%new - (void)myJumpToEnd:(id)scrollBarInfo
+{
+	id theList = [[scrollBarInfo userInfo] valueForKey:@"ListControl"];
+	int theCount = (int)[theList dataCount];
+	[theList setSelection:theCount];
+ 
+}
 /*
  
  Here we handle what kind of items are displayed in our list, we set the title from our [self menuItems] variable and add different accessories (think of UITableView item accessories, same kind of idea)
